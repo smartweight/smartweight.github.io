@@ -1,85 +1,86 @@
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+<metacharset="UTF-8">
+<title>Document</title>
 </head>
-  
+ 
 <style>
-        
+ 
 .textbox
 {
-	background-color : Black;
-	border-color     : RoyalBlue;
-	width            : 400;
-	font-family      : Consolas;
-	font-size        : 11pt;
-	color            : SkyBlue;
+  background-color : Black;
+  border-color : RoyalBlue;
+  width : 400;
+  font-family : Consolas;
+  font-size : 11pt;
+  color : SkyBlue;
 }
-        
+ 
 .button
 {
-	background-color : Black;
-	border-color     : White;
-	width            : 150;
-	height           : 30;
-	font-family      : Consolas;
-	font-size        : 14pt;
-	color            : SkyBlue;
+  background-color : Black;
+  border-color : White;
+  width : 150;
+  height : 30;
+  font-family : Consolas;
+  font-size : 14pt;
+  color : SkyBlue;
 }
-        
+ 
 label
 {
-	font-family : Consolas;
-	font-size   : 12pt;
-	color       : Silver;
+  font-family : Consolas;
+  font-size : 12pt;
+  color : Silver;
 }
-    
+ 
 </style>
 
-<body bgcolor="20;20;20">
-  <div class="form">
-    <label id="Label1">Введите ваш вес в килограммах:</label><br><br>
-    <input id="TextBox1" class="textbox" type="text"><br><br>
-    <label id="Label1">Введите ваш рост в метрах:</label><br><br>
-    <input id="TextBox2" class="textbox" type="text"><br><br>
-    <input id="Button1"  class="button"  type="button" value="Calculate" onclick="OnClickButton1();"><br><br>
-    <label id="Result1"></label>
-  </div>
+<bodybgcolor="20;20;20">
+<div>
+<labelid="Label1">Введите ваш вес в килограммах:</label><br>
+<inputid="TextBox1"class="textbox"type="text"><br><br>
+<labelid="Label2">Введите ваш рост в метрах:</label><br>
+<inputid="TextBox2"class="textbox"type="text"><br><br>
+<inputid="Button1"class="button"type="button"value="Calculate"><br><br>
+<labelid="Result1"></label>
+</div>
 </body>
 
-<script language="JScript">
-  
-        function OnClickButton1() {
-            var T1 = document.getElementById("TextBox1");
-            var T2 = document.getElementById("TextBox2");
-            var R1 = document.getElementById("Result1");
+<script>
+ 
+functionOnClickButton1() {
+varT1 = document.getElementById("TextBox1");
+varT2 = document.getElementById("TextBox2");
+varR1 = document.getElementById("Result1");
 
-            if (isNaN(T1.value) || isNaN(T2.value)) return;
-            
-            var a = T1.value;
-            var b = T2.value;
-            var c = a / (b ^ 2);
+if (isNaN(T1.value) || isNaN(T2.value)) return;
+ 
+vara = T1.value;
+varb = T2.value;
+varc = a / (b ^ 2);
 
-            switch (true) {
-                case c <= 16:
-                    R1.innerText = "У вас выраженный дефицит массы тела.";
-                    break;
-                case c <= 18.5:
-                    R1.innerText = "У вас недостаточная масса тела.";
-                    break;
-                case c <= 24.99:
-                    R1.innerText = "У вас нормальный вес.";
-                    break;
-                case c <= 30:
-                    R1.innerText = "У вас избыточная масса тела.";
-                    break;
-                case c <= 35:
-                    R1.innerText = "У вас ожирение.";
-                    break;
-            }
+switch (true) {
+casec <= 16:
+R1.innerText = "У вас выраженный дефицит массы тела.";
+break;
+casec <= 18.5:
+R1.innerText = "У вас недостаточная масса тела.";
+break;
+casec <= 24.99:
+R1.innerText = "У вас нормальный вес.";
+break;
+casec <= 30:
+R1.innerText = "У вас избыточная масса тела.";
+break;
+casec <= 35:
+R1.innerText = "У вас ожирение.";
+break;
+ }
 
-        }
+ }
 
+document.getElementById('Button1').addEventListener('click', OnClickButton1);
 </script>
 
 </html>
