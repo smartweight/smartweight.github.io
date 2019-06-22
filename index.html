@@ -38,16 +38,16 @@ label
 
 <body bgcolor="20;20;20">
   <div>
-    <label id="Label1">Введите ваш вес в килограммах:</label><br><br>
+    <label id="Label1">Введите ваш вес в килограммах:</label><br>
     <input id="TextBox1" class="textbox" type="text"><br><br>
-    <label id="Label1">Введите ваш рост в метрах:</label><br><br>
+    <label id="Label2">Введите ваш рост в метрах:</label><br>
     <input id="TextBox2" class="textbox" type="text"><br><br>
-    <input id="Button1"  class="button"  type="button" value="Calculate" onclick="OnClickButton1();"><br><br>
+    <input id="Button1"  class="button"  type="button" value="Calculate"><br><br>
     <label id="Result1"></label>
   </div>
 </body>
 
-<script language="JScript">
+<script>
   
         function OnClickButton1() {
             var T1 = document.getElementById("TextBox1");
@@ -80,6 +80,7 @@ label
 
         }
 
+        document.getElementById('Button1').addEventListener('click', OnClickButton1);
 </script>
 
 </html>
