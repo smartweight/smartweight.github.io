@@ -1,95 +1,112 @@
-
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
-  
-<style>
-        
-.textbox
-{
-	background-color : Black;
-	border-color     : RoyalBlue;
-	width            : 400;
-	font-family      : Consolas;
-	font-size        : 11pt;
-	color            : SkyBlue;
-}
-        
-.button
-{
-	background-color : Black;
-	border-color     : White;
-	width            : 150;
-	height           : 30;
-	font-family      : Consolas;
-	font-size        : 14pt;
-	color            : SkyBlue;
-}
-        
-label
-{
-	font-family : Consolas;
-	font-size   : 12pt;
-	color       : Silver;
-}
-    
-</style>
 
-<body bgcolor="20;20;20">
-  <div>
-    <label id="Label1">Введите ваш вес в килограммах:</label><br>
-    <input id="TextBox1" class="textbox" type="text"><br><br>
-    <label id="Label2">Введите ваш рост в метрах:</label><br>
-    <input id="TextBox2" class="textbox" type="text"><br><br>
-    <input id="Button1"  class="button"  type="button" value="Calculate" onclick="OnClickButton1();"><br><br>
-    <label id="Result1"></label>
-  </div>
+    <link rel="stylesheet" type="text/css" href="CSS/slider1.css"/>
+
+    <style>
+
+        .labelpoint {
+            font-family : Consolas;
+  	        font-size   : 12pt;
+  	        color       : Silver;
+  	        position    : absolute;
+        }
+
+
+        .button {
+	        background-color : Black;
+	        border-color     : royalblue;
+	        width            : 150;
+	        height           : 30;
+	        font-family      : Consolas;
+	        font-size        : 14pt;
+	        color            : SkyBlue;
+            position         : absolute;
+        }
+
+
+        .result {
+            font-family : Consolas;
+	        font-size   : 14pt;
+            width       : 170;
+            margin-top  : -2px;
+	        color       : Silver;
+            position    : absolute;
+        }
+
+    </style>
+
+<body bgcolor="30;30;30">
+    <div style="position:absolute;left:380;top:300px">
+        <input id="Slider1" type="range" min="5" max="200" style="left:170px;top:0px" oninput="OnInputSlider1();">
+        <label id="Label1" class="labelpoint" style="left:256px;top:0px"></label>
+        <input id="Slider2" type="range" min="50" max="250" style="left:170px;top:70px" oninput="OnInputSlider2();">
+        <label id="Label2" class="labelpoint" style="left:329px;top:70px"></label>
+        <input id="Button1" type="button" class="button" style="left:235px;top:150px" value="Calculate" onclick="OnClickButton1();">
+        <p     id="Remark1" class="result" style="left:20px;top:0px">Вес в [ кг ] :</p>
+        <p     id="Remark2" class="result" style="left:10px;top:70px">Рост в [ см ] :</p>
+        <p     id="Result1" class="result" style="left:170px;top:220px;width:500"></p>
+    </div>
 </body>
 
 <script>
-  
-        function OnClickButton1() {
-            var T1 = document.getElementById("TextBox1");
-            var T2 = document.getElementById("TextBox2");
-            var R1 = document.getElementById("Result1");
 
-            var a = T1.value.replace(",", ".");
-            var b = T2.value.replace(",", ".");
+    var S1 = document.getElementById("Slider1");
+    var S2 = document.getElementById("Slider2");
+    var L1 = document.getElementById("Label1");
+    var L2 = document.getElementById("Label2");
+    var R1 = document.getElementById("Result1");
+    S1.value = 65;
+    S2.value = 175;
+    var curvalue1 = S1.value;
+    var curvalue2 = S2.value;
+    L1.innerText = curvalue1;
+    L2.innerText = curvalue2;
 
-            if (isNaN(a) || isNaN(b)) {
-              R1.innerText = "Не корректное значение";
-              T1.value = "";
-              T2.value = "";
-              return;
-            }
 
-            T1.value = a;
-            T2.value = b;
-            
-            var c = a / (Math.pow(b, 2));
+    function OnInputSlider1() {
+        L1.style.left = String(Number(L1.style.left.replace("px", "")) + (S1.value - curvalue1) * 1.2);
+        curvalue1 = S1.value;
+        L1.innerText = S1.value;
+    }
 
-            switch (true) {
-                case c <= 16:
-                    R1.innerText = "У вас выраженный дефицит массы тела.";
-                    break;
-                case c <= 18.5:
-                    R1.innerText = "У вас недостаточная масса тела.";
-                    break;
-                case c <= 24.99:
-                    R1.innerText = "У вас нормальный вес.";
-                    break;
-                case c <= 30:
-                    R1.innerText = "У вас избыточная масса тела.";
-                    break;
-                case c <= 35:
-                    R1.innerText = "У вас ожирение.";
-                    break;
-            }
 
+    function OnInputSlider2() {
+        L2.style.left = String(Number(L2.style.left.replace("px", "")) + (S2.value - curvalue2) * 1.18);
+        curvalue2 = S2.value;
+        L2.innerText = S2.value;
+    }
+
+
+    function OnClickButton1() {
+        var a = S1.value;
+        var b = S2.value;
+        var c = a / (Math.pow(b / 100, 2));
+        switch (true) {
+            case c <= 16:
+                R1.innerText = "У вас выраженный дефицит массы тела.";
+                break;
+            case c <= 18.5:
+                R1.innerText = "У вас недостаточная масса тела.";
+                break;
+            case c <= 24.99:
+                R1.innerText = "У вас нормальный вес.";
+                break;
+            case c <= 30:
+                R1.innerText = "У вас избыточная масса тела.";
+                break;
+            case c <= 35:
+                R1.innerText = "У вас ожирение.";
+                break;
+            case c > 35:
+                R1.innerText = "эээ...";
+                break;
         }
+    }
 
-</script>
+</script> 
 
 </html>
