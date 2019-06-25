@@ -102,9 +102,11 @@
             case c <= 35:
                 R1.innerText = "У вас ожирение.";
                 break;
-            case c > 35:
-                R1.innerText = "эээ...";
+            case c <= 40:
+                R1.innerText = "У вас резкое ожирение.";
                 break;
+	    default:
+		R1.innerText = "У вас очень резкое ожирение.";	
         }
     }
 
