@@ -49,7 +49,7 @@
         <input id="Button1" type="button" class="button" style="left:235px;top:150px" value="Calculate" onclick="OnClickButton1();">
         <p     id="Remark1" class="result" style="left:20px;top:0px">Вес в [ кг ] :</p>
         <p     id="Remark2" class="result" style="left:10px;top:70px">Рост в [ см ] :</p>
-        <p     id="Result1" class="result" style="left:170px;top:220px;width:500"></p>
+        <p     id="Result1" class="result" style="left:70px;top:220px;width:500"></p>
     </div>
 </body>
 
@@ -86,27 +86,29 @@
         var a = S1.value;
         var b = S2.value;
         var c = a / (Math.pow(b / 100, 2));
+        var nabrat = Math.ceil((18.5 - c) * Math.pow(b / 100, 2));
+        var sbrosit = Math.ceil((c - 24.99) * Math.pow(b / 100, 2));
         switch (true) {
             case c <= 16:
-                R1.innerText = "У вас выраженный дефицит массы тела.";
+                R1.innerText = "У вас выраженный дефицит массы тела. Вам нужно набрать минимум " + nabrat + " кг.";
                 break;
             case c <= 18.5:
-                R1.innerText = "У вас недостаточная масса тела.";
+                R1.innerText = "У вас недостаточная масса тела. Вам нужно набрать минимум " + nabrat + " кг.";
                 break;
             case c <= 24.99:
                 R1.innerText = "У вас нормальный вес.";
                 break;
             case c <= 30:
-                R1.innerText = "У вас избыточная масса тела.";
+                R1.innerText = "У вас избыточная масса тела. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
             case c <= 35:
-                R1.innerText = "У вас ожирение.";
+                R1.innerText = "У вас ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
             case c <= 40:
-                R1.innerText = "У вас резкое ожирение.";
+                R1.innerText = "У вас резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
 	    default:
-		R1.innerText = "У вас очень резкое ожирение.";	
+		R1.innerText = "У вас очень резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";	
         }
     }
 
