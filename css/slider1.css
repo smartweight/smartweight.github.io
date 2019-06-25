@@ -1,25 +1,29 @@
 input[type="range"] {
     -webkit-appearance : none;
-    -moz-appearance    : none;
-    background-color   : rgb(50, 50, 50);
+    background-color   : rgb(50, 50, 100);
     width              : 280px;
+    outline            : none;
     position           : absolute;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-    border-radius    : 10px;
-    height           : 15px;
-    border           : 2px solid rgb(26, 16, 16);
-    background-color : rgb(42, 89, 228);
+    -webkit-appearance : none;
+    border-radius      : 10px;
+    height             : 15px;
+    border             : 2px solid rgb(26, 16, 16);
+    background-color   : rgb(42, 89, 228);
 }
 
 input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance : none;
     background-color   : Black;
     border             : 3px solid Green;
-    width              : 35px;
-    height             : 35px;
-    border-radius      : 35px;
+    width              : 40px;
+    height             : 40px;
+    border-radius      : 40px;
+    top                : -14px;
     cursor             : pointer;
+    position           : relative;
 }
 
 input[type="range"]::-moz-range-track {
