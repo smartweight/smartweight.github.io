@@ -4,54 +4,30 @@
     <title>Document</title>
 </head>
 
+<style>
+
+    @font-face {
+        font-family: "digital-7";
+        src: url("fonts/digital-7.ttf") format("truetype");
+    }
+
+</style>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <link rel="stylesheet" type="text/css" href="css/slider1.css"/>
 
-    <style>
-
-        .labelpoint {
-            font-family : Consolas;
-  	        font-size   : 12pt;
-  	        color       : Silver;
-            position    : absolute;
-            transform   : translateX(-50%);
-        }
-
-
-        .button {
-	        background-color : Black;
-	        border-color     : royalblue;
-	        width            : 150;
-	        height           : 30;
-	        font-family      : Consolas;
-	        font-size        : 14pt;
-	        color            : SkyBlue;
-            position         : absolute;
-        }
-
-
-        .result {
-            font-family : Consolas;
-	        font-size   : 14pt;
-            width       : 170;
-            margin-top  : -2px;
-	        color       : Silver;
-            position    : absolute;
-        }
-
-    </style>
-
-<body bgcolor="30;30;30">
-	        <div class="wrap">
-                <div class="text">
-                <p>Умные весы</p>
-                <span class="bg123">Умные весы</span>
-                </div>
-              </div>
+<body>
+	<div class="wrap">
+        <div class="text">
+            <p>Умные весы</p>
+            <span class="bg123">Умные весы</span>
+        </div>
+    </div>
     <div style="position:absolute;left:380;top:300px">
         <input id="Slider1" type="range" min="5" max="200" style="left:170px;top:0px" oninput="OnInputSlider1();" class="slider">
-        <label id="Label1" class="labelpoint" style="left:266px;top:0px"></label>
+        <label id="Label1" class="labelpoint" style="left:265px;top:-3px"></label>
         <input id="Slider2" type="range" min="50" max="250" style="left:170px;top:70px" oninput="OnInputSlider2();" class="slider">
-        <label id="Label2" class="labelpoint" style="left:341px;top:70px"></label>
+        <label id="Label2" class="labelpoint" style="left:340px;top:67px"></label>
         <input id="Button1" type="button" class="button" style="left:235px;top:150px" value="Рассчитать" onclick="OnClickButton1();">
         <p     id="Remark1" class="result" style="left:20px;top:0px">Вес в кг :</p>
         <p     id="Remark2" class="result" style="left:10px;top:70px">Рост в см :</p>
@@ -75,14 +51,14 @@
 
 
     function OnInputSlider1() {
-        L1.style.left = String(Number(L1.style.left.replace("px", "")) + (S1.value - curvalue1) * 1.21);
+        L1.style.left = String(Number(L1.style.left.replace("px", "")) + (S1.value - curvalue1) * 1.205);
         curvalue1 = S1.value;
         L1.innerText = S1.value;
     }
 
 
     function OnInputSlider2() {
-        L2.style.left = String(Number(L2.style.left.replace("px", "")) + (S2.value - curvalue2) * 1.18);
+        L2.style.left = String(Number(L2.style.left.replace("px", "")) + (S2.value - curvalue2) * 1.175);
         curvalue2 = S2.value;
         L2.innerText = S2.value;
     }
