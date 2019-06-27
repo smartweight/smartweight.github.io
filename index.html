@@ -65,33 +65,45 @@
 
 
     function OnClickButton1() {
-        var a = S1.value;
-        var b = S2.value;
-        var c = a / (Math.pow(b / 100, 2));
-        var nabrat = Math.ceil((18.5 - c) * Math.pow(b / 100, 2));
-        var sbrosit = Math.ceil((c - 24.99) * Math.pow(b / 100, 2));
+	var ves = S1.value;
+        var rost = S2.value;
+        var BMI = ves / (Math.pow(rost / 100, 2));
+        var nabrat = Math.ceil((18.5 - BMI) * Math.pow(rost / 100, 2));
+        var sbrosit = Math.ceil((BMI - 24.99) * Math.pow(rost / 100, 2));
+
+        var vozrast = 30;
+        var KA = 1.35;
+
+        var BMR_man = 88.36 + (13.4 * ves) + (4.8 * rost) - (5.7 * vozrast);
+        var BMR_woman = 447.6 + (9.2 * ves) + (3.1 * rost) - (4.3 * vozrast);
+        var RSK_man = Math.ceil(KA * BMR_man);
+        var RSK_woman = Math.ceil(KA * BMR_woman);
+
         switch (true) {
-            case c <= 16:
-                R1.innerText = "У вас выраженный дефицит массы тела. Вам нужно набрать минимум " + nabrat + " кг.";
+            case BMI <= 16:
+                R1.innerText = "У вас выраженный дефицит массы тела. Вам нужно набрать минимум " + nabrat + " кг. ";
                 break;
-            case c <= 18.5:
-                R1.innerText = "У вас недостаточная масса тела. Вам нужно набрать минимум " + nabrat + " кг.";
+            case BMI <= 18.5:
+                R1.innerText = "У вас недостаточная масса тела. Вам нужно набрать минимум " + nabrat + " кг. ";
                 break;
-            case c <= 24.99:
-                R1.innerText = "У вас нормальный вес.";
+            case BMI <= 24.99:
+                R1.innerText = "У вас нормальный вес. ";
                 break;
-            case c <= 30:
-                R1.innerText = "У вас избыточная масса тела. Вам нужно сбросить минимум " + sbrosit + " кг.";
+            case BMI <= 30:
+                R1.innerText = "У вас избыточная масса тела. Вам нужно сбросить минимум " + sbrosit + " кг. ";
                 break;
-            case c <= 35:
-                R1.innerText = "У вас ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
+            case BMI <= 35:
+                R1.innerText = "У вас ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";
                 break;
-            case c <= 40:
-                R1.innerText = "У вас резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
+            case BMI <= 40:
+                R1.innerText = "У вас резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";
                 break;
 	    default:
-		R1.innerText = "У вас очень резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";	
+		R1.innerText = "У вас очень резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";	
         }
+
+        R1.innerText += "Рекомендуемая суточная норма калорий: " + RSK_man + "калорий (если вы мужчина), ";
+        R1.innerText += RSK_woman + "калорий (если вы женщина). ";
     }
 
 </script> 
