@@ -1,53 +1,233 @@
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Умные весы</title>
-</head>
-
+<meta charset="UTF-8">
+<title>Document</title>
 <style>
-
     @font-face {
         font-family: "digital-7";
         src: url("fonts/digital-7.ttf") format("truetype");
     }
-
+   /* @font-face {
+        font-family: "Sochi2014";
+        src: url("fonts/Sochi2014.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "TransRoboticsExtended";
+        src: url("fonts/TransRoboticsExtended.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "ISOCPEUR";
+        src: url("fonts/ISOCPEUR.ttf") format("truetype");
+    } */
+    @font-face {
+        font-family: "Jura";
+        src: url("fonts/Jura.ttf") format("truetype");
+    }
 </style>
+<link rel="stylesheet" type="text/css" href="css/index.css"/>
+<link rel="stylesheet" type="text/css" href="css/slider_1.css"/>
+</head>
 
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slider1.css"/>
 
 <body>
-	<div class="wrap">
-        <div class="text">
-            <p>Умные весы</p>
-            <span class="bg123">Умные весы</span>
+
+    <div class="wrap">
+        
+        <div style="position:absolute;transform:translateX(-50%);margin-top:40px;margin-left:50%">
+            <svg height="600" width="1500">
+                <polyline points="280,40 310,10 1180,10 1210,40 1210,110 1180,140 310,140 280,110 280,40" stroke-width="1" stroke="rgb(0,0,0)" fill="rgba(100,170,10,.3)"></polyline>
+            </svg>
         </div>
+        <h1 class="mainheader">Умные весы</h1>
     </div>
-    <div style="position:absolute;left:380;top:300px">
-        <input id="Slider1" type="range" min="5" max="200" style="left:170px;top:0px" oninput="OnInputSlider1();" class="slider">
-        <label id="Label1" class="labelpoint" style="left:265px;top:-3px"></label>
-        <input id="Slider2" type="range" min="50" max="250" style="left:170px;top:70px" oninput="OnInputSlider2();" class="slider">
-        <label id="Label2" class="labelpoint" style="left:340px;top:67px"></label>
-        <input id="Button1" type="button" class="button" style="left:235px;top:150px" value="Рассчитать" onclick="OnClickButton1();">
-        <p     id="Remark1" class="result" style="left:20px;top:0px">Вес в кг :</p>
-        <p     id="Remark2" class="result" style="left:10px;top:70px">Рост в см :</p>
-        <p     id="Result1" class="result" style="left:70px;top:220px;width:500"></p>
+
+    <div style="position:absolute;top:300px;margin-left:15%">
+        <input id="Slider1" class="slider_1" type="range" min="5" max="200" style="left:170px;top:0px" oninput="OnInputSlider1();">
+        <label id="Label1"  class="labelpoint" style="left:265px;top:-3px"></label>
+        <input id="Slider2" class="slider_1" type="range" min="50" max="250" style="left:170px;top:70px" oninput="OnInputSlider2();">
+        <label id="Label2"  class="labelpoint" style="left:340px;top:67px"></label>
+        <input id="Slider3" class="slider_1" type="range" min="0" max="130" style="left:170px;top:140px" oninput="OnInputSlider3();">
+        <label id="Label3"  class="labelpoint" style="left:242px;top:137px"></label>
+
+        <div style="position:absolute;left:500px">
+            <img src="images/grey-plastic-track.jpg" style="position:absolute;width:29;height:320px"></img>
+            <img src="images/cursor-1.png" id="Cursor1" style="position:absolute;left:-10px;top:32px;height:50;width:75;cursor:pointer" onmousemove = "OnMouseMoveCursor1();"></img>
+        </div>
+
+        <div style="position:absolute;left:180px;top:200px">
+            <svg style="position:absolute;left:-10;top:-10">
+                <circle id="RadioCircle1" cx="19.5" cy="19.5" r="12" stroke="RoyalBlue" stroke-width="3" fill="transparent"></circle>
+                <circle id="RadioCircle2" cx="169" cy="19.5" r="12" stroke="RoyalBlue" stroke-width="3" fill="transparent"></circle>
+            </svg>
+            <input id="Radio1" type="radio" name="selectpol" class="radiobutton1" onclick="OnClickRadio1();" checked></input>
+            <label id="Label4" for="Radio1" class="radiolabel" style="left:25px">Мужчина</label>
+            <input id="Radio2" type="radio" name="selectpol" class="radiobutton1" style="left:150px"></input>
+            <label id="Label5" for="Radio2" class="radiolabel" style="left:175px" onclick="OnClickRadio2();">Женщина</label>
+        </div>
+
+        <input id="Button1" class="button" type="button"  style="left:235px;top:250px" value="Рассчитать" onclick="OnClickButton1();">
+
+        <div style="position:absolute;left:-20px;text-align:right">
+            <p id="Remark1" class="result" style="top:0px">Вес в кг :</p>
+            <p id="Remark2" class="result" style="top:70px">Рост в см :</p>
+            <p id="Remark3" class="result" style="top:140px">Возраст (лет) :</p>
+        </div>
+            
+        <img   id="Progressbar1" style="left:240px;top:290px;display:none" src="images/orange-round-progressbar.png" class="round_progressbar"></img>
+
+        <div style="position:absolute;left:580px;text-align:left">
+            <p id="Remark4" class="result" style="top:0px;width:500px">Физическая нагрузка отсутствует или минимальная</p>
+            <p id="Remark5" class="result" style="top:50px;width:500px">Тренировки средней тяжести 3 раза в неделю</p>
+            <p id="Remark6" class="result" style="top:100px;width:500px">Тренировки средней тяжести 5 раз в неделю</p>
+            <p id="Remark7" class="result" style="top:150px;width:500px">Интенсивные тренировки 5 раз в неделю</p>
+            <p id="Remark8" class="result" style="top:200px;width:500px">Тренировки каждый день</p>
+            <p id="Remark9" class="result" style="top:250px;width:500px">Интенсивные тренировки каждый день или по 2 раза в день</p>
+            <p id="Remark10" class="result" style="top:300px;width:500px">Ежедневная нагрузка + физическая работа</p>
+        </div>
+
+        <p     id="Result1" class="result" style="left:130px;top:340px;width:520"></p>
     </div>
 </body>
 
 <script>
 
+    var C1 = document.getElementById("Cursor1");
+
     var S1 = document.getElementById("Slider1");
     var S2 = document.getElementById("Slider2");
+    var S3 = document.getElementById("Slider3");
     var L1 = document.getElementById("Label1");
     var L2 = document.getElementById("Label2");
+    var L3 = document.getElementById("Label3");
+    var PB = document.getElementById("Progressbar1");
+    var Rad1 = document.getElementById("Radio1");
+    var Rad2 = document.getElementById("Radio2");
     var R1 = document.getElementById("Result1");
+
     S1.value = 65;
     S2.value = 175;
+    S3.value = 27;
     var curvalue1 = S1.value;
     var curvalue2 = S2.value;
+    var curvalue3 = S3.value;
     L1.innerText = curvalue1;
     L2.innerText = curvalue2;
+    L3.innerText = curvalue3;
+
+    var g = 0;
+    var t = 0;
+    var resultat = "";
+
+    var ves = S1.value;       // вес
+    var rost = S2.value;      // рост
+    var KA = 1.38;            // коэффициент активности
+    var vozrast = S3.value;   // возраст
+    var manpol = true;        // мужской пол
+
+    var cp;
+    var nl;
+    var ec;
+    var ch;
+    var np;
+    var R4 = document.getElementById("Remark4").style;
+    var R5 = document.getElementById("Remark5").style;
+    var R6 = document.getElementById("Remark6").style;
+    var R7 = document.getElementById("Remark7").style;
+    var R8 = document.getElementById("Remark8").style;
+    var R9 = document.getElementById("Remark9").style;
+    var R10 = document.getElementById("Remark10").style;
+    R5.color = "rgb(0, 255, 0)";
+    function OnMouseMoveCursor1() {
+        if (C1.focus) {
+            cp = Number(C1.style.top.replace("px", ""))
+            nl = cp + 325
+            ec = event.clientY;
+            ch = event.clientY - nl;
+            np = cp + ch;
+            if (np < -10) remark;
+            if (np > 283) remark;
+            switch (true) {
+                case np > -11 && np < 10:
+                    R4.color = "rgb(0, 255, 0)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.2;
+                    break;
+                case np < 45 && np > 22:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(0, 255, 0)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.38;
+                    break;
+                case np < 95 && np > 75:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(0, 255, 0)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.46;
+                    break;
+                case np < 145 && np > 123:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(0, 255, 0)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.55;
+                    break;
+                case np < 193 && np > 172:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(0, 255, 0)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.64;
+                    break;
+                case np < 260 && np > 225:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(0, 255, 0)";
+                    R10.color = "rgb(165, 165, 165)";
+                    KA = 1.73;
+                    break;
+                case np < 284 && np > 275:
+                    R4.color = "rgb(165, 165, 165)";
+                    R5.color = "rgb(165, 165, 165)";
+                    R6.color = "rgb(165, 165, 165)";
+                    R7.color = "rgb(165, 165, 165)";
+                    R8.color = "rgb(165, 165, 165)";
+                    R9.color = "rgb(165, 165, 165)";
+                    R10.color = "rgb(0, 255, 0)";
+                    KA = 1.9;
+                    break;
+            }
+            C1.style.top = np;
+        }
+    }
+
+
+
+
+    function RotateBar() {
+        PB.style.transform = "rotate(" + g + "deg)";
+    }
 
 
     function OnInputSlider1() {
@@ -64,46 +244,72 @@
     }
 
 
+    function OnInputSlider3() {
+        L3.style.left = String(Number(L3.style.left.replace("px", "")) + (S3.value - curvalue3) * 1.8);
+        curvalue3 = S3.value;
+        L3.innerText = S3.value;
+    }
+
+
+    function OnClickRadio1 () {
+        manpol = true;
+    }
+
+
+    function OnClickRadio2() {
+        manpol = false;
+    }
+
+
     function OnClickButton1() {
-	var ves = S1.value;
-        var rost = S2.value;
+        g = 0;
+        t = 0;
+        R1.innerText = "";
+        PB.style.display = "block";
+        var fnc = setInterval(function() {
+            RotateBar();
+            if (t > 1500) {
+                clearInterval(fnc);
+                PB.style.display = "none";
+                R1.innerText = resultat;
+            }
+            t = t + 12;
+            g = g + 4;
+        }, 12);
+
         var BMI = ves / (Math.pow(rost / 100, 2));
         var nabrat = Math.ceil((18.5 - BMI) * Math.pow(rost / 100, 2));
         var sbrosit = Math.ceil((BMI - 24.99) * Math.pow(rost / 100, 2));
-
-        var vozrast = 30;
-        var KA = 1.35;
-
-        var BMR_man = 88.36 + (13.4 * ves) + (4.8 * rost) - (5.7 * vozrast);
-        var BMR_woman = 447.6 + (9.2 * ves) + (3.1 * rost) - (4.3 * vozrast);
-        var RSK_man = Math.ceil(KA * BMR_man);
-        var RSK_woman = Math.ceil(KA * BMR_woman);
-
+        if (manpol) {
+            var RSK = Math.ceil(KA * (88.36 + (13.4 * ves) + (4.8 * rost) - (5.7 * vozrast)));
+        } else {
+            var RSK = Math.ceil(KA * (447.6 + (9.2 * ves) + (3.1 * rost) - (4.3 * vozrast)));
+        }
+        
         switch (true) {
             case BMI <= 16:
-                R1.innerText = "У вас выраженный дефицит массы тела. Вам нужно набрать минимум " + nabrat + " кг. ";
+                resultat = "У вас выраженный дефицит массы тела. Вам нужно набрать минимум " + nabrat + " кг.";
                 break;
             case BMI <= 18.5:
-                R1.innerText = "У вас недостаточная масса тела. Вам нужно набрать минимум " + nabrat + " кг. ";
+                resultat = "У вас недостаточная масса тела. Вам нужно набрать минимум " + nabrat + " кг.";
                 break;
             case BMI <= 24.99:
-                R1.innerText = "У вас нормальный вес. ";
+                resultat = "У вас нормальный вес.";
                 break;
             case BMI <= 30:
-                R1.innerText = "У вас избыточная масса тела. Вам нужно сбросить минимум " + sbrosit + " кг. ";
+                resultat = "У вас избыточная масса тела. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
             case BMI <= 35:
-                R1.innerText = "У вас ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";
+                resultat = "У вас ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
             case BMI <= 40:
-                R1.innerText = "У вас резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";
+                resultat = "У вас резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";
                 break;
-	    default:
-		R1.innerText = "У вас очень резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг. ";	
+	        default:
+		        resultat = "У вас очень резкое ожирение. Вам нужно сбросить минимум " + sbrosit + " кг.";	
         }
 
-        R1.innerText += "Рекомендуемая суточная норма калорий: " + RSK_man + "калорий (если вы мужчина), ";
-        R1.innerText += RSK_woman + "калорий (если вы женщина). ";
+        resultat += "Рекомендуемая суточная норма калорий: " + RSK;
     }
 
 </script> 
