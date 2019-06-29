@@ -1,16 +1,13 @@
 * {margin: 0;}
 
 
-body {
-    background : rgb(205, 205, 205);
-    font-size  :16px;
-}
+body {background : rgb(205, 205, 205);}
 
 
 .labelpoint {
     font-family    : "digital-7";
   	font-size      : 16pt;
-  	color          : rgb(0, 255, 0);
+    color          : rgb(0, 255, 0);
     position       : absolute;
     transform      : translateX(-50%);
     pointer-events : none;
@@ -18,64 +15,66 @@ body {
 
 
 .button {
-	background-color : rgb(0, 0, 0);
-	border-color     : rgb(65, 105, 225);
-	width            : 150;
-	height           : 30;
-	font-family      : Consolas;
+	background-color : rgb(30, 30, 30);
+    border-color     : rgb(65, 105, 225);
+    border-radius    : 8px;
+	width            : 150px;
+	height           : 30px;
+	font-family      : Jura;
     font-size        : 14pt;
-	color            : SkyBlue;
+    color            : SkyBlue;
+    outline          : none;
     position         : absolute;
 }
 
 
+.round_progressbar {
+    position      : absolute;
+    border-radius : 50%;
+}
+
+
 .result {
-    font-family : Consolas;
+    font-family : Jura;
 	font-size   : 14pt;
-    width       : 170;
+    width       : 170px;
     margin-top  : -2px;
-	color       : rgb(192, 192, 192);
+	color       : rgb(165, 165, 165);
     position    : absolute;
+}
+
+
+.radiobutton1 {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+
+.radiolabel {
+    font-family: Jura;
+    color       : rgb(165, 165, 165);
+    font-size: 14pt;
+    position: absolute;
+}
+
+
+.mainheader {
+    font-family : Jura;
+    font-size   : 100pt;
+    text-align  : center;
+    margin-top  : 40px;
+    text-shadow : -5px 4px 5px rgba(0, 0, 0, 0.7);
+    position    : relative;
 }
 
 
 .wrap {
     position        : relative;
-    background      : url("../images/devushka.jpg") no-repeat;
+    background      : url("../images/fon1.jpg") no-repeat;
     background-size : cover;
-    max-width       : 1288px;
+    max-width       : 1920px;
     min-height      : 1000px;
     overflow        : hidden;
     margin          : auto;
-}
-
-
-p {
-    font                    : 154px Arial, sans-serif;
-    background              : url("../images/dark-volokno.jpg")55% 45%;
-    background-size         : cover;
-    -webkit-text-fill-color : transparent;
-    -webkit-background-clip : text;
-    text-align              : center;
-    position                : absolute;
-    top                     : 0;
-    z-index                 : 2;
-}
-
-
-.text {
-    position : absolute;
-    top      : 85px;
-    left     : 120px;
-}
-    
-
-.bg123 {
-    font        : 154px Arial, sans-serif;
-    position    : relative;
-    color       : transparent;
-    opacity     : .9;
-    top         : 0;
-    z-index     : 1;
-    text-shadow : -5px 4px 5px rgba(0, 0, 0, 0.7)
 }

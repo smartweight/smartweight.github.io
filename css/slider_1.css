@@ -1,0 +1,49 @@
+.slider_1 {
+    -webkit-appearance : none;
+    background-color   : transparent;
+    width              : 280px;
+    outline            : none;
+    position           : absolute;
+}
+
+.slider_1::-webkit-slider-runnable-track {
+    -webkit-appearance : none;
+    border-radius      : 10px;
+    height             : 15px;
+    border             : none;
+    background-image   : url("../images/blue-metal-progressbar.jpg");
+    background-size    : 280px 15px;
+    background-repeat  : no-repeat;
+}
+
+.slider_1::-webkit-slider-thumb {
+    -webkit-appearance : none;
+    background-image   : url("../images/grey-round-button.jpg");
+    background-size    : contain;
+    border             : none;
+    width              : 46px;
+    height             : 46px;
+    border-radius      : 23px;
+    top                : -15px;
+    cursor             : pointer;
+    position           : relative;
+}
+
+.slider_1::-moz-range-track {
+    border-radius     : 10px;
+    height            : 15px;
+    border            : none;
+    background-image  : url("../images/blue-metal-progressbar.jpg");
+    background-size   : 280px 15px;
+    background-repeat : no-repeat;
+}
+
+.slider_1::-moz-range-thumb {
+    background-image : url("../images/grey-round-button.jpg");
+    background-size  : contain;
+    border           : none;
+    width            : 46px;
+    height           : 46px;
+    border-radius    : 23px;
+    cursor           : pointer;
+}
